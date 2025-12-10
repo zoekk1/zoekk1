@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
+<!--    font and icon api-->
+    <script src="https://kit.fontawesome.com/7bf84053cf.js" crossorigin="anonymous"></script>
+<!--    google chart api-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div id="leftSection" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="changeSideBar()">&times;</a>
+
+            <div id="logo-element" data-image-url="{{ url_for('static', filename='imag/dublinbikes-vector-logo.svg') }}">
+            <img src="{{ url_for('static', filename='img/dublinbikes-vector-logo.svg') }}" alt="Dublin Bikes logo">
+            </div>
+
+            <form class="sidebarElement" onsubmit="return submitForm(event);">
+                <input type="date" id="journeydate" class="dateandtime" name="journeydate" placeholder="">
+                <input type="time" id="journeytime" class="dateandtime" name="journeytime">
+                <div class="journey-info-wrapper">
+                    <input type="text" id="journeyfrom" class="journeyinfo" name="journeyfrom" placeholder="From">
+                    <input type="text" id="journeyto" class="journeyinfo" name="journeyto" placeholder="To">
+                    <input type="hidden" id="origin-lat-lng" name="origin_lat_lng" />
+                    <input type="hidden" id="destination-lat-lng" name="destination_lat_lng" />
+
+                </div>
+
+                <div id="mode-selector" class="controls">
+                    <i class="fa-solid fa-person-walking fa-xl"></i>
+                    <input type="radio" name="type" id="changemode-walking" value="walking" checked="checked" />
+                    <i class="fa-solid fa-bus fa-xl"></i>
+                    <input type="radio" name="type" id="changemode-transit" value="transit" />
+                    <!-- <label for="changemode-transit">Transit</label> -->
+                    <i class="fa-solid fa-car fa-xl" style="color: #ffffff;"></i>
+                    <input type="radio" name="type" id="changemode-driving" value="driving" />
+                    <!-- <label for="changemode-driving">Driving</label> -->
+                </div>
+                <button type="submit" class="submit-button" >Submit</button>
+            </form>
+
+            <div id="info"></div>
+
+        </div>
+
+        
+
+    </div>
+    <div id="map"></div>
+    <div id="weather"></div>
+    <script src="{{url_for('static', filename='js/weather.js')}}"></script>
+    <script src="{{url_for('static', filename='js/direction.js')}}"></script>
+    <script src="{{url_for('static', filename='js/index.js')}}"></script>
+    <div id="my-element-1" data-image-url="{{ url_for('static', filename='img/greenbike.svg') }}"></div>
+    <div id="my-element-3" data-image-url="{{ url_for('static', filename='img/redbike.svg') }}"></div>    
+    <div id="my-element-2" data-image-url="{{ url_for('static', filename='img/bluebike.svg') }}"></div>
+    <div id="my-element-4" data-image-url="{{ url_for('static', filename='img/parkingblue.svg') }}"></div>
+    <div id="my-element-5" data-image-url="{{ url_for('static', filename='img/parkingred.svg') }}"></div>    
+    <div id="my-element-6" data-image-url="{{ url_for('static', filename='img/parkinggreen.svg') }}"></div>
+
+     <script src="{{url_for('static', filename='js/load_google_maps_api.js')}}"></script>
+
+</body>
+</html>

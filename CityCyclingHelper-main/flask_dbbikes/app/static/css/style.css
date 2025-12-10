@@ -1,0 +1,476 @@
+
+html, body {
+height: 100%;
+margin: 0;
+padding: 0;
+font-family: 'Dosis', sans-serif;
+zoom: 0.85;
+}
+
+#map {
+    height: 100%; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    filter: grayscale(50%);
+  } 
+
+  #logo-element{
+    display: flex;
+    justify-content: center;
+    height: 150px;
+    width: 35rem;
+    /* background-color: red; */
+  }
+
+
+
+#StationDetailButton:hover, .MapButton:hover, .btn-design:hover{
+  background-color: #444;
+}
+
+#closeSideBar {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.bike_chart {
+    display: none;
+    width: 100%;
+    height: 300px;
+}
+.stand_chart {
+    display: none;
+    width: 100%;
+    height: 300px;
+}
+  
+  #StationDetailButton {
+    color: white;
+    background-color: rgb(84, 145, 245);
+    border: white;
+    width: 100%;
+    border-radius: 5px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+#container{
+   display: flex;
+flex-direction: column;
+    position:absolute;
+    left:0px;
+    right:0px;
+
+    top:0px;
+    height: 100%;
+    bottom:0px;
+    overflow-x: hidden; 
+    background-color: rgb(40, 39, 39);
+}
+
+  /* The sidebar menu */
+  #sidebar {
+    justify-content: center; 
+    height: 100%;
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+   /* Stay on top */
+  
+/* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  }
+  
+  .MapButton {  
+    font-size: 25px;
+    cursor: pointer;
+    background-color: rgb(40, 39, 39);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    position: sticky;
+    top: 10px;
+    left: 370px;
+    border-radius: 15px;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .controls {
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    width: 20rem;
+    padding: 20px;
+    margin-left: 100px
+  }
+
+  .submit-button{
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 30px;
+    height: 50px;
+    width: 15rem;
+    margin-left: 100px;
+    background-color: rgb(175, 88, 88);
+    margin-left: 160px
+
+  }
+
+  .submit-button:hover{
+    background-color: rgb(225, 235, 235);
+  }
+  
+   .sidebar a {
+    text-decoration: none;
+    font-size: 50px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    margin: 10px;
+  }
+
+
+.btn-design{
+  font-size: 25px;
+  cursor: pointer;
+  background-color: rgb(40, 39, 39);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  position: sticky;
+  top: 10px;
+  left: 370px;
+  border-radius: 15px;
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+  
+  .sidebarElement {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 20rem;
+    width: 20rem;
+  
+  }
+  
+  .dateandtime {
+    height: 60px;
+    width: 18.5rem;
+    border-radius: 25px;
+    margin-left: 130px;
+
+  
+  }
+  
+  .journeyinfo{
+    height: 50px;
+    width: 22.5rem;
+    border-radius: 25px;
+    margin-left: 100px;
+
+  }
+  
+  
+  #journeyfrom, #journeyto {
+    font-size: 30px;
+  }
+  #journeydate, #journeytime {
+    font-size: 30px;
+    /* background-color: green; */
+  }
+  .journey-info-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;  
+    height: 15rem;
+    width: 30rem;
+    /* background-color: green; */
+  }
+  
+  .date-time-wrapper{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column; 
+    height: 15rem;
+    width: 30rem;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  
+.openbtn:hover {
+  background-color: #444;
+}
+
+
+.stationCard {
+  border-radius: 10px;
+  background-color: rgb(97, 97, 97);
+  box-shadow: 0 2px 4px rgba(205, 204, 204, 0.2);
+  padding: 10px 10px;
+  font-size: 18px;
+  margin: 5px 10px;
+  color: rgb(255, 255, 255);
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+
+
+/*chart buttons*/
+.button-group {
+    display: none;
+}
+
+.chart-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: #9e9e9e; /* Default background color */
+  color: white;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.history.selected,
+.chart-button.history:hover {
+  background-color: #312727; /* Selected background color */
+  box-shadow: 0 0 10px rgba(49, 39, 39, 0.5); /* Adjusted box-shadow */
+}
+
+.predict_24h.selected,
+.chart-button.predict_24h:hover {
+    background-color: #312727; /* Selected background color */
+    box-shadow: 0 0 10px rgba(49, 39, 39, 0.5); /* Adjusted box-shadow */
+}
+
+.predict_5d.selected,
+.chart-button.predict_5d:hover {
+    background-color: #312727; /* Selected background color */
+    box-shadow: 0 0 10px rgba(49, 39, 39, 0.5); /* Adjusted box-shadow */
+}
+
+
+
+.trendButton{
+  height: 80px;
+  width: 10rem;
+  font-size: 25px;
+  border-radius: 10px;
+  margin-left: 150px;
+
+}
+
+.trendButton:hover{
+  background-color: rgb(175, 88, 88);
+}
+
+.gm-style-iw-c::before {
+  display: none;
+}
+.gm-ui-hover-effect {
+  display: none !important;
+}
+
+
+/*This part is displayed vertically*/
+#weather {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  padding: 10px;
+  background-color: rgb(40, 39, 39); /* Black*/
+  border: none;
+  border-radius: 15px;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  max-width: 300px;
+  width: 100%;
+}
+
+.weather-border {
+  border: none;
+  border-radius: 15px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.weather-header {
+  font-weight: bold;
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.weather-content {
+
+  font-size: 35px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weather-content .icon {
+  width: 120px;
+  height: 120px;
+}
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.weather-info p {
+  margin: 0;
+}
+
+
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  padding: 20px 30px;
+  font-size: 22px;
+  border: none;
+  cursor: pointer;
+}
+
+.five-day{
+  width: 16.5rem;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  background-color: rgb(40, 39, 39); /* Black*/
+
+}
+
+
+.dropdown-content {
+  font-size: 27px;
+
+  max-height: 400px;
+  overflow-y: auto;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: rgb(40, 39, 39); /* Black*/
+  border-radius: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+  font-size: 20px;
+
+  color: white;
+  padding: 12px 13px;
+  text-decoration: none;
+  display: block;
+}
+
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.details {
+  display: none;
+}
+
+.show {
+  display: block;
+} 
+
+.icon {
+  width: 10rem;
+  height: 150px;
+}
+
+.warn-icon {
+    font-size: 24px;
+    margin-right: 10px;
+  color: white;
+}
+
+.warn-text {
+    font-size: 20px;
+  color: white;
+  display: block;
+}
+/*prompt drop down for the colored bikes*/
+.btn-design:hover .prompt_dropdown {
+  display: block;
+}
+
+.prompt_dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.prompt_line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.prompt_square {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+}
+
+.prompt_text {
+  font-size: 14px;
+  color: #333;
+}
+
+
+
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+
